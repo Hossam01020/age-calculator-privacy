@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="mainHtml">
+<html lang="en" dir="ltr" id="mainHtml">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سياسة الخصوصية | حاسبة العمر</title>
+<title>Privacy Policy | Age Calculator</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
@@ -45,8 +45,8 @@
     }
     .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
     .card { background-color: #FFFFFF; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-    h2 { color: var(--primary); font-size: 22px; margin-top: 30px; border-right: 5px solid var(--primary); padding-right: 15px; }
-    [dir="ltr"] h2 { border-right: none; border-left: 5px solid var(--primary); padding-right: 0; padding-left: 15px; }
+    h2 { color: var(--primary); font-size: 22px; margin-top: 30px; border-left: 5px solid var(--primary); padding-left: 15px; }
+    [dir="rtl"] h2 { border-left: none; border-right: 5px solid var(--primary); padding-left: 0; padding-right: 15px; }
     p { font-size: 16px; color: #4A4A4A; }
     .contact-box { text-align: center; margin-top: 30px; background-color: #F8F6FF; padding: 25px; border-radius: 12px; border: 1px solid #D1C4E9; }
     .contact-box a { display: inline-block; background: var(--primary); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; margin-top: 10px; }
@@ -62,7 +62,7 @@
 
 <div class="header">
     <button class="translate-btn" onclick="toggleLanguage()">English / عربي</button>
-    <h1 id="mainTitle">سياسة الخصوصية | حاسبة العمر</h1>
+    <h1 id="mainTitle">Privacy Policy | Age Calculator</h1>
 </div>
 
 <div class="container">
@@ -70,11 +70,11 @@
 </div>
 
 <div class="footer" id="footerText">
-    &copy; 2026 جميع الحقوق محفوظة لمطور التطبيق
+    &copy; 2026 All rights reserved by the developer
 </div>
 
 <script>
-let isArabic = true;
+let isArabic = false;
 
 const translations = {
     ar: {
@@ -85,7 +85,7 @@ const translations = {
             <p>نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح هذه السياسة كيف يتعامل تطبيق <strong>حاسبة العمر</strong> مع المعلومات.</p>
 
             <h2>جمع المعلومات</h2>
-            <p>التطبيق <strong>لا يجمع أو يخزن أو يشارك أي بيانات شخصية</strong> عن المستخدمين. جميع العمليات الحسابية وتواريخ الميلاد تُعالج محلياً على جهازك فقط.</p>
+            <p>التطبيق <strong>لا يجمع أو يخزن أو يشارك أي بيانات شخصية</strong> عن المستخدمين. جميع العمليات الحسابية وتواريخ الميلاد التي يتم إدخالها تُعالج محلياً على جهازك فقط.</p>
             <p>التطبيق يعمل بالكامل بدون الحاجة للإنترنت، لذا لا يتم نقل أي بيانات إلى خوادم خارجية.</p>
 
             <h2>استخدام الأذونات</h2>
@@ -145,24 +145,24 @@ function toggleLanguage() {
     const mainTitle = document.getElementById('mainTitle');
     const footerText = document.getElementById('footerText');
 
-    if (isArabic) {
-        htmlTag.setAttribute('dir', 'ltr');
-        htmlTag.setAttribute('lang', 'en');
-        content.innerHTML = translations.en.body;
-        mainTitle.innerText = translations.en.title;
-        footerText.innerHTML = translations.en.footer;
-    } else {
+    if (!isArabic) {
         htmlTag.setAttribute('dir', 'rtl');
         htmlTag.setAttribute('lang', 'ar');
         content.innerHTML = translations.ar.body;
         mainTitle.innerText = translations.ar.title;
         footerText.innerHTML = translations.ar.footer;
+    } else {
+        htmlTag.setAttribute('dir', 'ltr');
+        htmlTag.setAttribute('lang', 'en');
+        content.innerHTML = translations.en.body;
+        mainTitle.innerText = translations.en.title;
+        footerText.innerHTML = translations.en.footer;
     }
     isArabic = !isArabic;
 }
 
 window.onload = () => {
-    document.getElementById('content').innerHTML = translations.ar.body;
+    document.getElementById('content').innerHTML = translations.en.body;
 };
 </script>
 
