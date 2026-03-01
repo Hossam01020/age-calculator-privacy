@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="mainHtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سياسة الخصوصية | حاسبة العمر</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #673AB7;
+        --bg: #F4F6F8;
+        --text: #2D3436;
+    }
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: var(--bg);
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+        line-height: 1.8;
+    }
+    .header {
+        background-color: var(--primary);
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+        border-bottom: 5px solid #512DA8;
+        position: relative;
+    }
+    .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
+    .translate-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: white;
+        color: var(--primary);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1000;
+        font-family: 'Cairo', sans-serif;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .card { background-color: #FFFFFF; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    h2 { color: var(--primary); font-size: 22px; margin-top: 30px; border-right: 5px solid var(--primary); padding-right: 15px; }
+    [dir="ltr"] h2 { border-right: none; border-left: 5px solid var(--primary); padding-right: 0; padding-left: 15px; }
+    p { font-size: 16px; color: #4A4A4A; }
+    .contact-box { text-align: center; margin-top: 30px; background-color: #F8F6FF; padding: 25px; border-radius: 12px; border: 1px solid #D1C4E9; }
+    .contact-box a { display: inline-block; background: var(--primary); color: white; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; margin-top: 10px; }
+    .footer { text-align: center; color: #718096; padding: 40px; font-size: 14px; }
+    @media (max-width: 600px) {
+        .header h1 { font-size: 22px; }
+        .card { padding: 20px; }
+        .translate-btn { top: 10px; left: 10px; padding: 6px 12px; font-size: 12px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <button class="translate-btn" onclick="toggleLanguage()">English / عربي</button>
+    <h1 id="mainTitle">سياسة الخصوصية | حاسبة العمر</h1>
+</div>
+
+<div class="container">
+    <div class="card" id="content"></div>
+</div>
+
+<div class="footer" id="footerText">
+    &copy; 2026 جميع الحقوق محفوظة لمطور التطبيق
+</div>
+
+<script>
+let isArabic = true;
+
+const translations = {
+    ar: {
+        title: "سياسة الخصوصية | حاسبة العمر",
+        footer: "&copy; 2026 جميع الحقوق محفوظة لمطور التطبيق",
+        body: `
+            <h2>مقدمة</h2>
+            <p>نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح هذه السياسة كيف يتعامل تطبيق <strong>حاسبة العمر</strong> مع المعلومات.</p>
+
+            <h2>جمع المعلومات</h2>
+            <p>التطبيق <strong>لا يجمع أو يخزن أو يشارك أي بيانات شخصية</strong> عن المستخدمين. جميع العمليات الحسابية وتواريخ الميلاد تُعالج محلياً على جهازك فقط.</p>
+            <p>التطبيق يعمل بالكامل بدون الحاجة للإنترنت، لذا لا يتم نقل أي بيانات إلى خوادم خارجية.</p>
+
+            <h2>استخدام الأذونات</h2>
+            <p>لا يطلب التطبيق الوصول إلى أي أذونات حساسة مثل الكاميرا، الصور، أو الموقع.</p>
+
+            <h2>الخدمات الخارجية</h2>
+            <p>التطبيق لا يستخدم أي أدوات تحليلات أو شبكات إعلانية خارجية تقوم بتتبع بيانات المستخدم.</p>
+
+            <h2>خصوصية الأطفال</h2>
+            <p>التطبيق آمن للاستخدام من قبل جميع الأعمار، ولا يجمع أي معلومات شخصية من الأطفال.</p>
+
+            <h2>تعديلات سياسة الخصوصية</h2>
+            <p>قد نقوم بتحديث هذه السياسة من وقت لآخر، وسيتم نشر أي تغييرات هنا فوراً.</p>
+
+            <h2>تواصل معنا</h2>
+            <p>إذا كان لديك أي استفسار، يمكنك التواصل معنا عبر البريد الإلكتروني:</p>
+            <div class="contact-box">
+                <a href="mailto:h04007603@gmail.com">h04007603@gmail.com</a>
+            </div>
+        `
+    },
+    en: {
+        title: "Privacy Policy | Age Calculator",
+        footer: "&copy; 2026 All rights reserved by the developer",
+        body: `
+            <h2>Introduction</h2>
+            <p>We respect your privacy and are committed to protecting your personal information. This policy explains how the <strong>Age Calculator</strong> app handles user information.</p>
+
+            <h2>Information Collection</h2>
+            <p>The application <strong>does not collect, store, or share any personal data</strong> from users. All calculations and dates entered are processed locally on your device only.</p>
+            <p>The app works entirely offline, so no data is transmitted to any external servers.</p>
+
+            <h2>Permissions Usage</h2>
+            <p>The app does not request access to any sensitive permissions such as camera, photos, or location.</p>
+
+            <h2>Third-Party Services</h2>
+            <p>The app does not use any analytics tools or advertising networks that track user data.</p>
+
+            <h2>Children's Privacy</h2>
+            <p>The app is safe for all ages and does not collect any personal information from children.</p>
+
+            <h2>Policy Updates</h2>
+            <p>We may update this Privacy Policy from time to time, and any changes will be posted here immediately.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions, please contact us via email:</p>
+            <div class="contact-box">
+                <a href="mailto:h04007603@gmail.com">h04007603@gmail.com</a>
+            </div>
+        `
+    }
+};
+
+function toggleLanguage() {
+    const htmlTag = document.getElementById('mainHtml');
+    const content = document.getElementById('content');
+    const mainTitle = document.getElementById('mainTitle');
+    const footerText = document.getElementById('footerText');
+
+    if (isArabic) {
+        htmlTag.setAttribute('dir', 'ltr');
+        htmlTag.setAttribute('lang', 'en');
+        content.innerHTML = translations.en.body;
+        mainTitle.innerText = translations.en.title;
+        footerText.innerHTML = translations.en.footer;
+    } else {
+        htmlTag.setAttribute('dir', 'rtl');
+        htmlTag.setAttribute('lang', 'ar');
+        content.innerHTML = translations.ar.body;
+        mainTitle.innerText = translations.ar.title;
+        footerText.innerHTML = translations.ar.footer;
+    }
+    isArabic = !isArabic;
+}
+
+window.onload = () => {
+    document.getElementById('content').innerHTML = translations.ar.body;
+};
+</script>
+
+</body>
+</html>
